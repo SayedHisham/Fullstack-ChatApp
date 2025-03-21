@@ -11,8 +11,7 @@ const path = require("path");
 
 
 const port = process.env.PORT 
-console.log("DATABASE:", process.env.DATABASE); // Debugging
-console.log("PASSWORD:", process.env.PASSWORD); // Debugging
+
 
 let DB = process.env.DATABASE.replace("<password>",process.env.PASSWORD);
 
@@ -33,10 +32,10 @@ app.get("/", (req, res) => {
 
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+    res.sendFile(path.join(__dirname, "../Frontend", "dist", "index.html"));
   });
 }
 

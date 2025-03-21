@@ -18,7 +18,7 @@ let DB = process.env.DATABASE.replace("<password>",process.env.PASSWORD);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: "https://fullstack-chatapp-fx4d.onrender.com://localhost:5173", 
+  origin: "https://fullstack-chatapp-fx4d.onrender.com", 
     methods: "GET, POST, PUT, DELETE, OPTIONS",
     allowedHeaders: "Content-Type, Authorization",
     credentials: true 

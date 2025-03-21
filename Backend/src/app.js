@@ -1,4 +1,8 @@
-const dotenv =require('dotenv');
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const dotenv = require('dotenv');
+
+dotenv.config();
 const express = require('express');
 const authRoute = require('./routes/userAuthroute')
 const mongoose = require('mongoose');

@@ -11,7 +11,7 @@ const path = require("path");
 
 
 const port = process.env.PORT 
-const __dirname = path.resolve();
+
 
 let DB = process.env.DATABASE.replace('<password>',process.env.PASSWORD);
 

@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-dotenv.config();
+dotenv.config({ path: './config.env' });
 const express = require('express');
 const authRoute = require('./routes/userAuthroute')
 const mongoose = require('mongoose');
@@ -11,9 +11,10 @@ const path = require("path");
 
 
 const port = process.env.PORT 
+console.log("DATABASE:", process.env.DATABASE); // Debugging
+console.log("PASSWORD:", process.env.PASSWORD); // Debugging
 
-
-let DB = process.env.DATABASE.replace('<password>',process.env.PASSWORD);
+let DB = process.env.DATABASE.replace("<password>",process.env.PASSWORD);
 
 app.use(express.json());
 app.use(cookieParser());
@@ -22,8 +23,8 @@ app.use(cors({
   credentials: true,
 }))
 
-app.use('/api/auth',authRoute)
-app.use('/api/message',messageroute)
+app.use("/api/auth",authRoute)
+app.use("/api/message",messageroute)
 app.get("/", (req, res) => {
   res.send("Backend is running!");
 });

@@ -2,12 +2,14 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-   "type": "module",
-  "devDependencies": {},
+  "type": "commonjs",
   "scripts": {
-    "start":"node src/app.js"
+    "start": "node src/app.js"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
 }

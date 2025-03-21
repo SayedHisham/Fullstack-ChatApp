@@ -6,10 +6,11 @@ const cookieParser = require('cookie-parser');
 const messageroute = require('./routes/messageRoute');
 const cors = require('cors');
 const { app, server } = require("./socket");
+const path = require("path");
 
-dotenv.config({ path: './../config.env' });
 
 const port = process.env.PORT 
+const __dirname = path.resolve();
 
 let DB = process.env.DATABASE.replace('<password>',process.env.PASSWORD);
 
@@ -22,6 +23,14 @@ app.use(cors({
 
 app.use('/api/auth',authRoute)
 app.use('/api/message',messageroute)
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+  });
+}
 
 server.listen(port, () => {
     console.log(`server listening on ${port}`);

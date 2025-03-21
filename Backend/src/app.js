@@ -18,7 +18,7 @@ let DB = process.env.DATABASE.replace("<password>",process.env.PASSWORD);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: "*", 
+  origin: "http://localhost:5173", 
     methods: "GET, POST, PUT, DELETE, OPTIONS",
     allowedHeaders: "Content-Type, Authorization",
     credentials: true 
@@ -26,9 +26,6 @@ app.use(cors({
 
 app.use("/api/auth",authRoute)
 app.use("/api/message",messageroute)
-app.get("/", (req, res) => {
-  res.send("Backend is running!");
-});
 
 
 
